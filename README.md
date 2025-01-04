@@ -33,6 +33,7 @@ Le backend utilise **SQLite** comme base de données. Pour configurer et initial
 php bin/console doctrine:database:create
 php bin/console doctrine:migrations:migrate -n
 symfony server:start
+php bin/phpunit tests/Functional
 ```
 
 ### 3. Frontend (angular)
