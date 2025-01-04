@@ -8,6 +8,7 @@ use App\Entity\Traffic;
 use App\Service\TrafficService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 final class TrafficController extends AbstractController
@@ -15,23 +16,14 @@ final class TrafficController extends AbstractController
     #[Route('/api/traffic', name: 'api_traffic', methods: ['GET'])]
     public function getTraffic(TrafficService $trafficService): JsonResponse
     {
-        $response = $this->getResponse($trafficService);
+        $data = $trafficService->getData();
 
-        return new JsonResponse($response);
-    }
-
-    /**
-     * @param TrafficService $trafficService
-     * @return array|array[]
-     */
-    private static function getResponse(TrafficService $trafficService): array
-    {
-        return array_map(function (Traffic $traffic) {
-            return [
-                'id' => $traffic->getId(),
-                'page_url' => $traffic->getPageUrl(),
-                'traffic' => $traffic->getTraffic(),
-            ];
-        }, $trafficService->getTrafficData());
+        return
+            new JsonResponse(
+                $data,
+                !empty($data) ?
+                    Response::HTTP_OK :
+                    Response::HTTP_NO_CONTENT
+            );
     }
 }

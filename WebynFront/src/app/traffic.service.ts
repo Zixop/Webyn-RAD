@@ -6,7 +6,7 @@ import { Observable } from 'rxjs'
     providedIn: 'root',
 })
 export class TrafficService {
-    private apiUrl = 'http://127.0.0.1:8000/api/traffic'
+    private apiUrl = 'https://127.0.0.1:8000/api/traffic'
 
     constructor(private http: HttpClient) {}
 
