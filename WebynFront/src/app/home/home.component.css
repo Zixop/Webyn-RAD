@@ -1,0 +1,27 @@
+.page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Toute la hauteur de l'écran */
+  padding: 20px;
+  background-color: #f0f4f8; /* Fond clair */
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.text-container {
+  max-width: 600px; /* Largeur maximale pour le contenu */
+  width: 100%;
+}
+
+h1 {
+  font-size: 2.5rem; /* Taille de la police adaptée */
+  color: #0d47a1; /* Bleu foncé */
+  margin-bottom: 1rem;
+}
+
+p {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+}

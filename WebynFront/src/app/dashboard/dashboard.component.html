@@ -1,0 +1,37 @@
+<main class="main">
+  <div class="dashboard-container">
+    <h1>Traffic Dashboard</h1>
+
+    <div class="filter-container">
+      <label for="trafficFilter">Filter Traffic Greater Than : </label>
+      <input
+        id="trafficFilter"
+        type="number"
+        [(ngModel)]="filterValue"
+        placeholder="Enter minimum traffic value"
+        style="margin-bottom: 1rem"
+      />
+    </div>
+
+    <p-table
+      #trafficTable
+      [value]="filteredTraffics"
+      [tableStyle]="{ 'min-width': '50rem' }"
+      [globalFilterFields]="['traffic.traffic']"
+    >
+      <ng-template #header>
+        <tr>
+          <th>Page URL</th>
+          <th>Traffic Number</th>
+        </tr>
+      </ng-template>
+      <ng-template #body let-traffic>
+        <tr>
+          <td>{{ traffic.page_url }}</td>
+          <td>{{ traffic.traffic }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+    <canvas id="myChart"></canvas>
+  </div>
+</main>
